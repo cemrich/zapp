@@ -45,7 +45,7 @@ import timber.log.Timber;
 
 public class ChannelDetailActivity extends FullscreenActivity implements StreamPageFragment.Listener {
 
-	private static final String EXTRA_CHANNEL_ID = "de.christinecoenen.code.zapp.EXTRA_CHANNEL_ID";
+	public static final String EXTRA_CHANNEL_ID = "de.christinecoenen.code.zapp.EXTRA_CHANNEL_ID";
 
 	private Toolbar toolbar;
 	private ClickableViewPager viewPager;
@@ -306,6 +306,7 @@ public class ChannelDetailActivity extends FullscreenActivity implements StreamP
 		Bundle extras = intent.getExtras();
 		//noinspection ConstantConditions
 		String channelId = extras.getString(EXTRA_CHANNEL_ID);
+
 		int channelPosition = channelList.indexOf(channelId);
 
 		viewPager.removeOnPageChangeListener(onPageChangeListener);

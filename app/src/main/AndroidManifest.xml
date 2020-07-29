@@ -13,6 +13,8 @@
 	<uses-feature
 		android:name="android.hardware.touchscreen"
 		android:required="false" />
+	<uses-feature android:name="android.software.leanback"
+		android:required="false" />
 
 	<application
 		android:name=".app.ZappApplication"
@@ -23,7 +25,8 @@
 		android:supportsRtl="false"
 		android:theme="@style/AppTheme"
 		android:usesCleartextTraffic="true"
-		tools:ignore="GoogleAppIndexingWarning,UnusedAttribute">
+		tools:ignore="GoogleAppIndexingWarning,UnusedAttribute"
+		android:banner="@drawable/banner">
 
 		<meta-data
 			android:name="com.samsung.android.icon_container.has_icon_container"
@@ -104,6 +107,17 @@
 			android:name=".app.mediathek.ui.detail.MediathekDetailActivity"
 			android:label="@string/fragment_mediathek_title" />
 
+		<activity
+			android:name=".app.TvActivity"
+			android:label="@string/app_name">
+
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+			</intent-filter>
+
+		</activity>
+
 		<service
 			android:name=".app.player.BackgroundPlayerService"
 			android:exported="false" />
@@ -125,6 +139,15 @@
 			android:exported="false">
 			<intent-filter>
 				<action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+			</intent-filter>
+		</receiver>
+
+		<receiver
+			android:name=".RunOnInstallReceiver"
+			android:exported="true">
+			<intent-filter>
+				<action android:name="android.media.tv.action.INITIALIZE_PROGRAMS" />
+				<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</receiver>
 	</application>

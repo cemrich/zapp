@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Develop-zapp.iml" filepath="$PROJECT_DIR$/.idea/modules/Develop-zapp.iml" group="zapp" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/zapp.iml" filepath="$PROJECT_DIR$/zapp.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/zapp-app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/zapp-app.iml" group="zapp/app" />
     </modules>
   </component>
 </project>

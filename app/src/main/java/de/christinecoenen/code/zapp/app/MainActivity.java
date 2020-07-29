@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 
+import com.google.android.material.navigation.NavigationView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,17 +21,17 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentPagerAdapter;
 import androidx.preference.PreferenceManager;
 import androidx.viewpager.widget.ViewPager;
-
-import com.google.android.material.navigation.NavigationView;
-
 import de.christinecoenen.code.zapp.R;
 import de.christinecoenen.code.zapp.app.about.ui.AboutActivity;
+import de.christinecoenen.code.zapp.app.livestream.ui.detail.ChannelDetailActivity;
 import de.christinecoenen.code.zapp.app.livestream.ui.list.ChannelListFragment;
 import de.christinecoenen.code.zapp.app.mediathek.repository.MediathekSearchSuggestionsProvider;
 import de.christinecoenen.code.zapp.app.mediathek.ui.list.MediathekListFragment;
 import de.christinecoenen.code.zapp.app.settings.ui.SettingsActivity;
 import de.christinecoenen.code.zapp.databinding.ActivityMainBinding;
 import de.christinecoenen.code.zapp.utils.system.MenuHelper;
+
+import static de.christinecoenen.code.zapp.app.livestream.ui.detail.ChannelDetailActivity.EXTRA_CHANNEL_ID;
 
 public class MainActivity extends AppCompatActivity implements ViewPager.OnPageChangeListener, SearchView.OnQueryTextListener {
 
@@ -163,6 +165,11 @@ public class MainActivity extends AppCompatActivity implements ViewPager.OnPageC
 			search(query);
 
 			MediathekSearchSuggestionsProvider.saveQuery(this, query);
+		}
+		// Android TV program starters will send this action and the desired channel to play as extra
+		if ("play".equals(intent.getAction()) && intent.getExtras()!=null) {
+			String channelId = intent.getExtras().getString(EXTRA_CHANNEL_ID);
+			startActivity(ChannelDetailActivity.getStartIntent(this, channelId));
 		}
 	}
 
