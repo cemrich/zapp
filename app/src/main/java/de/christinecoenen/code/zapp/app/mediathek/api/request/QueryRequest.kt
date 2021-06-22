@@ -36,8 +36,8 @@ class QueryRequest : Serializable {
 	@Suppress("unused")
 	private val sortOrder: String = "desc"
 
-	@Suppress("unused")
-	private val future: Boolean = false
+
+	private val future: Boolean = true
 
 	var offset: Int = 0
 	var size: Int = 30
